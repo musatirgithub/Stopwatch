@@ -13,5 +13,5 @@ startBtn.addEventListener('click', ()=>{
 pauseBtn.addEventListener('click', ()=>{
     pauseTime = new Date();
     diff = (pauseTime - startTime);
-    console.log(diff);
+    console.log(diff.to);
 })
