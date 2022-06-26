@@ -11,6 +11,8 @@ let hour;
 let remainder;
 let min;
 let sec;
+let resume = true;
+
 
 function msConverter(ms){
     seconds = ms / 1000;
@@ -21,11 +23,13 @@ function msConverter(ms){
     document.getElementById("timer").innerText = `${hour} : ${min} : ${sec}`;
 }
 startBtn.addEventListener('click', ()=>{
-    startTime = new Date();
-    clearInterval(startStopwatch);
-    startStopwatch = setInterval(()=>{
-        msConverter(diff + (new Date() - startTime));
-    }, 1000)
+    if (startTime == null || (startTime != null && pauseTime != null) && resume) {
+        startTime = new Date();
+        startStopwatch = setInterval(()=>{
+            msConverter(diff + (new Date() - startTime));
+        }, 1000)
+        resume = false;
+    }
 })
 
 pauseBtn.addEventListener('click', ()=>{
@@ -34,6 +38,7 @@ pauseBtn.addEventListener('click', ()=>{
         pauseTime = new Date();
         diff += (pauseTime - startTime);
         clearInterval(startStopwatch);
+        resume = true;
     } 
 })
 
@@ -44,6 +49,8 @@ resetBtn.addEventListener('click', ()=>{
     min = 0;
     sec = 0;
     document.getElementById("timer").innerText = `${hour} : ${min} : ${sec}`;
-clearInterval(startStopwatch);
+    clearInterval(startStopwatch);
+    diff = 0;
+    resume = true;
 })
 //console.log(msConverter(107012350));
