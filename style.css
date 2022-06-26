@@ -37,9 +37,12 @@ button{
     width: 4rem;
     height: 2rem;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(243, 207, 164, 0.5);
+    box-shadow: 4px 4px 4px rgba(243, 207, 164, 0.5);
     cursor: pointer;
-    
+}
+
+button:hover{
+    background-color: rgb(138, 17, 17);
 }
 
 #timer{
